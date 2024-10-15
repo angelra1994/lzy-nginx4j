@@ -1,0 +1,3 @@
+rootProject.name = 'lzy-nginx4j'
+println("当前项目路径：rootProject.name:${rootProject.name}")
+println("你干嘛")

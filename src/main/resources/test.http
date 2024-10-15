@@ -1,0 +1,23 @@
+GET http://localhost:9090/hello
+
+###
+POST http://localhost:9090/hello
+Content-Type: application/json
+
+{
+  "name": "bilibili"
+}
+
+###
+
+GET http://localhost:6060/hello
+
+###
+POST http://localhost:6060/hello
+Content-Type: application/json
+
+{
+  "name": "pilipili"
+}
+
+###
