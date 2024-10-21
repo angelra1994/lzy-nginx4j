@@ -36,6 +36,7 @@ public class ProxyVerticle extends AbstractVerticle {
             httpClient.request(req1.method(), req1.uri(), ar1 -> {
                 if(ar1.succeeded()) {
                     HttpClientRequest req2 = ar1.result();
+
                     req2.response(ar2 -> {
                         if(ar2.succeeded()) {
                             HttpClientResponse resp2 = ar2.result();
@@ -59,6 +60,15 @@ public class ProxyVerticle extends AbstractVerticle {
                         }
                     });
 
+
+                    if (!req1.isEnded()) {
+                        req1.handler(x -> {
+                            System.out.println("req1, x = " + x);
+                        });
+                    } else {
+                        req1.end();
+                    }
+
 //                    req1.handler(x -> {
 //                            req2.write(x);
 //                            req2.end();
@@ -69,6 +79,8 @@ public class ProxyVerticle extends AbstractVerticle {
                         System.out.println("req1, x = " + x);
                         req2.end();
                     });
+                } else {
+
                 }
             });
 
